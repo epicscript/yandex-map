@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="https://api-maps.yandex.ru/2.1?apikey=8b045776-186c-453f-ba75-704b090677cd&lang=ru_RU"
+      type="text/javascript"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+    <title>Выпускной проект №1</title>
+  </head>
+  <body>
+    <div id="map" class="map"></div>
+    <section class="popup"></section>
+
+    <script type="text/x-handlebars-template" id="headerTemplate">
+      <header class="popup__header">
+        <h2 class="popup__title">
+          {{address}}
+        </h2>
+        <!-- <button class="popup__close">Colse</button> -->
+      </header>
+    </script>
+
+    <script type="text/x-handlebars-template" id="commentsTemplate">
+      <ul class="popup__list">
+          {{#each list}}
+          <li class="item">
+            <span class="item-username">{{name}}</span>
+            <span class="item-location">{{location}}</span>
+            <span class="item-date">{{date}}</span>
+            <p class="item-comment">{{comment}}</p>
+          </li>
+          {{/each}}
+        </ul>
+    </script>
+
+    <script type="text/x-handlebars-template" id="formTemplate">
+      <form name="commentForm" class="popup__form">
+        <p class="form-title">Ваш отзыв</p>
+        <input
+          id="input-name"
+          type="text"
+          placeholder="Ваше имя"
+          class="popup__input"
+        />
+        <input
+          id="input-location"
+          type="text"
+          class="popup__input"
+          placeholder="Укажите место"
+        />
+        <textarea
+          name=""
+          id="input-comment"
+          cols="30"
+          rows="10"
+          class="popup__input popup__input-textarea"
+          placeholder="Поделитесь впечатлениями"
+        ></textarea>
+
+        <button type="submit" id="add" class="btn">Добавить</button>
+      </form>
+    </script>
+    <script src="main.js" type="text/javascript"></script>
+  </body>
+</html>
